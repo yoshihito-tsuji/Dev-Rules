@@ -43,7 +43,7 @@
 
 ## 🛠 使用ツール
 
-- Cursor
+- VSCode（Visual Studio Code）
 - GitHub
 - Markdown
 - 図表生成ツール
@@ -82,4 +82,4 @@
 
 ---
 
-**最終更新**: 2025-12-31
+**最終更新**: 2026-01-16
