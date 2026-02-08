@@ -55,6 +55,7 @@
 5. [ドキュメント管理](#ドキュメント管理)
 6. [ワークフロー](#ワークフロー)
 7. [新規プロジェクト立ち上げ手順](#新規プロジェクト立ち上げ手順)
+8. [Claude Code Best Practice](#claude-code-best-practice)
 
 ---
 
@@ -491,5 +492,76 @@ A: LOGは日次の作業履歴、DECISIONSは重要な決定事項の永続記�
 
 ---
 
-**最終更新**: 2025-12-31
-**バージョン**: 1.0.1
+## 📚 Claude Code Best Practice
+
+### 概要
+
+このリポジトリには、Claude Code（Anthropic公式CLI）を効果的に活用するためのベストプラクティス集が統合されています。Claude Code担当者（実装AI）は、この資料を参照することで、より高度な自動化とワークフロー最適化が可能になります。
+
+### 配置場所
+
+[`claude-code/`](claude-code/) ディレクトリに、以下の内容が含まれています：
+
+- **Skills（スキル）**: 再利用可能な知識とワークフロー（`.claude/skills/`）
+- **Subagents（サブエージェント）**: 独立した実行コンテキスト（`.claude/agents/`）
+- **Hooks（フック）**: イベント駆動型スクリプト（`.claude/hooks/`）
+- **Reports（レポート）**: 実践的な調査レポート（`reports/`）
+- **Workflows（ワークフロー）**: 実装例とパターン（`workflow/`）
+
+### 主要なベストプラクティス
+
+#### ワークフロー設計
+
+- **CLAUDE.mdは150行以下に**: 指示遵守率を高めるため、簡潔に保つ
+- **コマンド→エージェント→スキル**: 再利用可能な3層アーキテクチャを採用
+- **プランモードから開始**: 複雑なタスクは実装前に計画を立てる
+- **こまめなコミット**: タスク完了後すぐにコミットして状態を保存
+
+#### 効率化テクニック
+
+- **手動/compact実行**: コンテキスト使用率50%で圧縮
+- **バックグラウンドタスク**: ログを確認したいコマンドはBTW（background task）で実行
+- **ステータスライン**: コンテキスト使用状況を常に把握
+
+#### デバッグ
+
+- `/doctor`コマンドで診断
+- MCPでブラウザコンソールログを確認
+- スクリーンショット提供で視覚的な問題を共有
+
+### Dev-Rulesとの統合
+
+Claude Code Best Practiceは、Dev-Rulesの三者協働開発方法論を**技術的に補完**する位置づけです：
+
+| Dev-Rules | Claude Code Best Practice |
+| --------- | ------------------------- |
+| **開発プロセス**（三者協働、役割分担） | **技術実装**（自動化、効率化） |
+| Codex・Claude Code・Yoshihitoさんの協働方法 | Claude Codeの高度な活用方法 |
+| コミュニケーションルール、ドキュメント管理 | Skills、Hooks、Subagentsの実装パターン |
+
+### 活用方法
+
+1. **各プロジェクトのCLAUDE.mdに参照を追加**:
+
+   ```markdown
+   開発方法論: Dev-Rules参照
+   Claude Code設定: Dev-Rules/claude-code/参照
+   ```
+
+2. **必要なスキルやフックをプロジェクトにコピー**:
+
+   ```bash
+   cp -r Dev-Rules/claude-code/.claude/skills/weather-fetcher myproject/.claude/skills/
+   ```
+
+3. **サブエージェントの設計パターンを参考にする**:
+   [`claude-code/.claude/agents/`](claude-code/.claude/agents/)の実装例を確認
+
+### 詳細ドキュメント
+
+完全なドキュメントは [`claude-code/README.md`](claude-code/README.md) を参照してください。
+
+---
+
+**最終更新**: 2026-02-08
+**バージョン**: 1.1.0
