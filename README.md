@@ -148,7 +148,8 @@ To: [Yoshihitoさん / Claude Code]
 
 #### 起動プロンプト
 
-各プロジェクトの `CODEX_START.md` を参照
+各プロジェクトの `CODEX_START.md` を参照  
+初回認識や共通運用方針の確認には `CODEX_ONBOARDING.md` も参照
 
 ---
 
@@ -559,7 +560,8 @@ Claude Code Best Practiceは、Dev-Rulesの三者協働開発方法論を**技�
 
 ### 詳細ドキュメント
 
-完全なドキュメントは [`claude-code/README.md`](claude-code/README.md) を参照してください。
+- Codex向け起動・認識ガイド: [`CODEX_ONBOARDING.md`](CODEX_ONBOARDING.md)
+- Claude Code Best Practice完全ガイド: [`claude-code/README.md`](claude-code/README.md)
 
 ---
 
