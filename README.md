@@ -379,6 +379,28 @@ project/
 
 ## 🚀 新規プロジェクト立ち上げ手順
 
+### 0. Claude Codeグローバル設定（PC初回のみ）
+
+新しいPCでClaude Codeを使い始めるとき、グローバルCLAUDE.mdを配置してください。
+この設定は全プロジェクト共通で自動読み込みされます。
+
+```bash
+# Dev-Rulesをクローン（まだの場合）
+cd ~/Claude_Code
+git clone https://github.com/yoshihito-tsuji/Dev-Rules.git
+
+# グローバルCLAUDE.mdを配置
+mkdir -p ~/.claude
+cp ~/Claude_Code/Dev-Rules/setup/global-claude-md.md ~/.claude/CLAUDE.md
+```
+
+グローバルCLAUDE.mdを更新した場合は、Dev-Rulesに同期してください：
+
+```bash
+cp ~/.claude/CLAUDE.md ~/Claude_Code/Dev-Rules/setup/global-claude-md.md
+cd ~/Claude_Code/Dev-Rules && gacp "Update: グローバルCLAUDE.mdテンプレートを同期"
+```
+
 ### 1. リポジトリ作成
 
 ```bash
@@ -390,7 +412,7 @@ git init
 ### 2. Dev-Rulesからテンプレートをコピー
 
 ```bash
-# このリポジトリをクローン
+# このリポジトリをクローン（まだの場合）
 git clone https://github.com/yoshihito-tsuji/Dev-Rules.git
 
 # テンプレートファイルをコピー
@@ -440,6 +462,7 @@ git push -u origin main
 ## 🔗 関連リソース
 
 - [TEMPLATE_README.md](TEMPLATE_README.md) - 新規プロジェクト用テンプレート
+- [setup/global-claude-md.md](setup/global-claude-md.md) - Claude CodeグローバルCLAUDE.mdテンプレート（`~/.claude/CLAUDE.md`用）
 - [docs/team_ops/codex_role.md](docs/team_ops/codex_role.md) - Codex役割定義
 - [docs/team_ops/claude_code_role.md](docs/team_ops/claude_code_role.md) - Claude Code役割定義
 - [docs/team_ops/LOG_TEMPLATE.md](docs/team_ops/LOG_TEMPLATE.md) - 日次ログテンプレート
@@ -565,5 +588,5 @@ Claude Code Best Practiceは、Dev-Rulesの三者協働開発方法論を**技�
 
 ---
 
-**最終更新**: 2026-02-08
-**バージョン**: 1.1.0
+**最終更新**: 2026-02-09
+**バージョン**: 1.2.0
