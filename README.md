@@ -487,6 +487,7 @@ git push -u origin main
 ## 🔗 関連リソース
 
 - [TEMPLATE_README.md](TEMPLATE_README.md) - 新規プロジェクト用テンプレート
+- [TEMPLATE_CLAUDE.md](TEMPLATE_CLAUDE.md) - プロジェクトCLAUDE.mdテンプレート（AI起動時の自動読み込み用、60〜100行目標）
 - [TEMPLATE_KNOWN_ISSUES.md](TEMPLATE_KNOWN_ISSUES.md) - 既知の問題と解決策テンプレート
 - [setup/global-claude-md.md](setup/global-claude-md.md) - Claude CodeグローバルCLAUDE.mdテンプレート（`~/.claude/CLAUDE.md`用）
 - [docs/team_ops/codex_role.md](docs/team_ops/codex_role.md) - Codex役割定義
