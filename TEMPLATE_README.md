@@ -32,7 +32,8 @@
 2. **役割定義確認** → `docs/team_ops/codex_role.md` または `claude_code_role.md` を確認
 3. **LOG確認** → `LOG/YYYY-MM-DD.md` で当日の作業状況を確認
 4. **DECISIONS確認** → `DECISIONS.md` で重要な決定事項を確認
-5. **From/To形式で応答開始** → 必ず「From: [あなたの名前] / To: [受信者名]」形式で開始
+5. **KNOWN_ISSUES確認** → `KNOWN_ISSUES.md` で既知の問題と解決策を確認
+6. **From/To形式で応答開始** → 必ず「From: [あなたの名前] / To: [受信者名]」形式で開始
 
 ### ⚠️ 禁止事項
 
@@ -188,6 +189,7 @@ To: [受信者名]
 project/
 ├── README.md                     # このファイル
 ├── DECISIONS.md                  # 重要な決定事項
+├── KNOWN_ISSUES.md               # 既知の問題と解決策
 ├── CODEX_START.md                # Codex起動プロンプト
 ├── docs/
 │   ├── team_ops/
@@ -229,6 +231,7 @@ project/
 - [docs/team_ops/claude_code_role.md](docs/team_ops/claude_code_role.md) - Claude Code役割定義
 - [docs/SETUP_GUIDE.md](docs/SETUP_GUIDE.md) - 環境構築詳細
 - [DECISIONS.md](DECISIONS.md) - 重要な決定事項
+- [KNOWN_ISSUES.md](KNOWN_ISSUES.md) - 既知の問題と解決策
 - [LOG/](LOG/) - 日次作業ログ
 
 ---
@@ -242,6 +245,10 @@ project/
 ### 決定事項
 
 重要な決定は `DECISIONS.md` に1行形式で記録
+
+### 既知の問題と解決策
+
+過去に発生した問題と解決策は `KNOWN_ISSUES.md` に記録。AI担当者が同じ問題を繰り返さないための「組織の記憶」として機能する。原因の特定に時間がかかった問題を優先的に記録すること。
 
 ### 設計書
 
