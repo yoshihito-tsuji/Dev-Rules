@@ -17,9 +17,9 @@
 1. 次に `docs/team_ops/claude_code_role.md` を読んでください
 2. その後、そのファイルに記載された起動手順に従ってください
 
-#### Codex（設計担当）の場合
+#### Claude Code（設計・プランモード）の場合
 
-1. 次に `docs/team_ops/codex_role.md` を読んでください
+1. 次に `docs/team_ops/claude_code_design_role.md` を読んでください
 2. その後、そのファイルに記載された起動手順に従ってください
 
 **重要**: 役割定義ファイルを読んだ後、そこに記載された手順（DECISIONS.md、LOGの確認等）を必ず実行してください。
@@ -29,7 +29,7 @@
 ### 📋 AI起動時の必須手順（概要）
 
 1. **README.md精読** → プロジェクト全体像を把握
-2. **役割定義確認** → `docs/team_ops/codex_role.md` または `claude_code_role.md` を確認
+2. **役割定義確認** → `docs/team_ops/claude_code_design_role.md` または `claude_code_role.md` を確認
 3. **LOG確認** → `LOG/YYYY-MM-DD.md` で当日の作業状況を確認
 4. **DECISIONS確認** → `DECISIONS.md` で重要な決定事項を確認
 5. **KNOWN_ISSUES確認** → `KNOWN_ISSUES.md` で既知の問題と解決策を確認
@@ -38,7 +38,7 @@
 ### ⚠️ 禁止事項
 
 - README.mdを読まずに作業を開始すること
-- 三者協働ルールを無視して単独で判断すること
+- 協働ルールを無視して単独で判断すること
 - From/To形式を使わずに応答すること
 - ログや決定事項を記録せずに作業を進めること
 - **日本語以外の言語（英語等）で応答・ドキュメント・コメントを記述すること**
@@ -82,7 +82,7 @@
 
 ### 基本原則
 
-1. **設計と実装の分離**: 設計（Codex）と実装（Claude Code）を明確に分離
+1. **設計と実装の分離**: 設計（Claude Code プランモード）と実装（Claude Code 通常モード）を明確に分離
 2. **トレーサビリティ**: すべての決定事項と作業履歴を記録
 3. **再現性**: 誰でも（AI含む）過去の文脈を理解し、作業を再開できる
 4. **継続性**: プロジェクトが中断しても、ドキュメントから再開できる
@@ -97,14 +97,14 @@
 
 | 担当者 | 主な役割 | 責任範囲 |
 |--------|---------|---------|
-| **Codex** | 設計・アーキテクチャ担当 | 要件分析、システム設計、技術選定、実装計画策定 |
-| **Claude Code** | 実装担当 | コーディング、テスト、デバッグ、環境構築 |
+| **Claude Code（設計・プランモード）** | 設計・アーキテクチャ担当 | 要件分析、システム設計、技術選定、実装計画策定 |
+| **Claude Code（実装・通常モード）** | 実装担当 | コーディング、テスト、デバッグ、環境構築 |
 | **Yoshihitoさん** | プロダクトオーナー | 最終意思決定、要件定義、方針決定 |
 
 ### 重要ルール
 
 1. **すべて日本語で記述**: AI応答、コメント、ドキュメントは必ず日本語で記述すること
-2. **設計なしに実装しない**: 新機能や大きな変更は必ずCodexの設計を経由
+2. **設計なしに実装しない**: 新機能や大きな変更は必ずプランモードで設計を経由
 3. **実装は設計に基づく**: Claude Codeは設計書に基づいて実装
 4. **最終決定はYoshihitoさん**: 重要な方針変更は必ずYoshihitoさんの承認を得る
 5. **すべてを記録する**: 決定事項、提案、実装内容をドキュメント化
@@ -190,11 +190,10 @@ project/
 ├── README.md                     # このファイル
 ├── DECISIONS.md                  # 重要な決定事項
 ├── KNOWN_ISSUES.md               # 既知の問題と解決策
-├── CODEX_START.md                # Codex起動プロンプト
 ├── docs/
 │   ├── team_ops/
-│   │   ├── codex_role.md         # Codex役割定義
-│   │   ├── claude_code_role.md   # Claude Code役割定義
+│   │   ├── claude_code_design_role.md  # Claude Code設計役割定義
+│   │   ├── claude_code_role.md         # Claude Code実装役割定義
 │   │   └── LOG_TEMPLATE.md       # ログテンプレート
 │   ├── design/                   # 設計書
 │   └── SETUP_GUIDE.md            # 環境構築詳細
@@ -209,15 +208,15 @@ project/
 
 ### 新機能開発
 
-1. **Yoshihitoさん**: 要件をCodexに伝える
-2. **Codex**: 設計書を作成し、Claude Codeに実装指示
-3. **Claude Code**: 実装・テスト・ログ記録
+1. **Yoshihitoさん**: 要件をClaude Code（設計）に伝える
+2. **Claude Code（設計）**: プランモードで設計書を作成し、Claude Code（実装）に指示
+3. **Claude Code（実装）**: 実装・テスト・ログ記録
 4. **Yoshihitoさん**: 実装結果を確認・承認
 
 ### バグ修正
 
 1. **Yoshihitoさん**: バグ内容をClaude Codeに伝える
-2. **Claude Code**: 軽微なバグは直接修正、設計変更が必要ならCodexに相談
+2. **Claude Code（実装）**: 軽微なバグは直接修正、設計変更が必要ならプランモードで設計
 3. **Yoshihitoさん**: 修正結果を確認
 
 詳細は [Dev-Rules: ワークフロー](https://github.com/yoshihito-tsuji/Dev-Rules#ワークフロー) を参照。
@@ -226,9 +225,9 @@ project/
 
 ## 📚 関連ドキュメント
 
-- [Dev-Rules](https://github.com/yoshihito-tsuji/Dev-Rules) - 三者協働開発方法論
-- [docs/team_ops/codex_role.md](docs/team_ops/codex_role.md) - Codex役割定義
-- [docs/team_ops/claude_code_role.md](docs/team_ops/claude_code_role.md) - Claude Code役割定義
+- [Dev-Rules](https://github.com/yoshihito-tsuji/Dev-Rules) - 協働開発方法論
+- [docs/team_ops/claude_code_design_role.md](docs/team_ops/claude_code_design_role.md) - Claude Code設計役割定義
+- [docs/team_ops/claude_code_role.md](docs/team_ops/claude_code_role.md) - Claude Code実装役割定義
 - [docs/SETUP_GUIDE.md](docs/SETUP_GUIDE.md) - 環境構築詳細
 - [DECISIONS.md](DECISIONS.md) - 重要な決定事項
 - [KNOWN_ISSUES.md](KNOWN_ISSUES.md) - 既知の問題と解決策
@@ -252,7 +251,7 @@ project/
 
 ### 設計書
 
-Codexの設計書は `docs/design/` に格納
+設計担当Claude Codeの設計書は `docs/design/` に格納
 
 ---
 

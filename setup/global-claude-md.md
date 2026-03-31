@@ -19,11 +19,11 @@
 - 外部API呼び出しには必ずエラーハンドリング、エラーメッセージは具体的に
 - 関数は単一責任、変数名・関数名は意図が明確に
 
-## 三者間協働ルール
+## 協働ルール
 
 ### 開発方法論: Dev-Rules
 
-全プロジェクト共通の三者協働開発方法論。各プロジェクトのREADME.mdに参照あり。
+全プロジェクト共通の協働開発方法論。各プロジェクトのREADME.mdに参照あり。
 - **GitHub**: https://github.com/yoshihito-tsuji/Dev-Rules
 - **ローカル**: 各プロジェクトの `../Dev-Rules/` に配置
 - **Claude Code Best Practice**: `../Dev-Rules/claude-code/README.md`
@@ -40,10 +40,10 @@
 ### 役割分担・コミュニケーション
 
 - **Yoshihitoさん**: プロダクトオーナー、最終意思決定者
-- **Codex**: アーキテクト、設計者、技術方針策定
-- **Claude Code**: 実装エンジニア、コードレビュー実施
-- **From/To記法を使用**（例: `From: Claude Code, To: Yoshihitoさん`）
-- 意思決定優先順位: Yoshihitoさんの意図 > Codexの設計方針 > 技術的ベストプラクティス
+- **Claude Code（プランモード）**: アーキテクト、設計者、技術方針策定
+- **Claude Code（通常モード）**: 実装エンジニア、コードレビュー実施
+- **From/To記法を使用**（設計時: `From: Claude Code（設計）`、実装時: `From: Claude Code`）
+- 意思決定優先順位: Yoshihitoさんの意図 > 設計方針 > 技術的ベストプラクティス
 - レビュー完了後は必ずYoshihitoさんに報告、重要な判断は実装前に確認
 
 ## UI/UX実装指針

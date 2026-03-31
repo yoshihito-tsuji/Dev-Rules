@@ -1,4 +1,9 @@
-# Codex起動・認識プロンプト
+# Codex起動・認識プロンプト（旧版・アーカイブ）
+
+> ⚠️ **このドキュメントは旧Codex向けのアーカイブです。**
+> 新体制（Claude Code プランモード）向けは [`docs/team_ops/claude_code_design_role.md`](docs/team_ops/claude_code_design_role.md) を参照してください。
+
+---
 
 このファイルは、Codex（設計担当AI）がDev-Rulesリポジトリの内容を理解し、三者協働開発方法論を認識するための説明プロンプトです。
 

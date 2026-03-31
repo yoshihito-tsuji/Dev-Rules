@@ -96,15 +96,15 @@ EOF
 cat > "$PROJECT_DIR/docs/team_ops/claude_code_role.md" << 'ROLE_EOF'
 # Claude Code 役割定義
 
-> 三者協働開発（Yoshihitoさん + Codex + Claude Code）の役割定義。
+> Claude Code（設計・実装）とYoshihitoさんの協働開発の役割定義。
 > グローバルルールは `~/.claude/CLAUDE.md` に定義済み。ここではプロジェクト固有の補足のみ記載。
 
 ---
 
 ## 役割
 
-- **設計**: Codex
-- **実装・テスト**: Claude Code
+- **設計**: Claude Code（プランモード）
+- **実装・テスト**: Claude Code（通常モード）
 - **方針・最終判断**: Yoshihitoさん
 
 ## コミュニケーション形式（必須）
@@ -158,7 +158,7 @@ cat > "$PROJECT_DIR/README.md" << EOF
 
 ## 開発ルール
 
-三者協働開発（Yoshihitoさん + Codex + Claude Code）で進行。
+Claude Code（設計・実装）とYoshihitoさんの協働開発で進行。
 詳細は \`../Dev-Rules/README.md\` を参照。
 
 ---
@@ -187,4 +187,4 @@ echo "次のステップ:"
 echo "  1. CLAUDE.md を編集 — 技術スタック・フェーズを記入"
 echo "  2. README.md を編集 — プロジェクト概要を記述"
 echo "  3. GitHub でリポジトリを作成して push"
-echo "  4. Codex に設計を依頼"
+echo "  4. Claude Code（プランモード）で設計を開始"
