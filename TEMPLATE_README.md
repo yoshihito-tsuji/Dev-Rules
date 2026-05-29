@@ -22,6 +22,11 @@
 1. 次に `docs/team_ops/claude_code_design_role.md` を読んでください
 2. その後、そのファイルに記載された起動手順に従ってください
 
+#### xangi システム / LOCO（相談役・整理役）の場合
+
+1. 次に `docs/team_ops/xangi_system_role.md` を読んでください
+2. その後、そのファイルに記載された起動手順に従ってください
+
 **重要**: 役割定義ファイルを読んだ後、そこに記載された手順（DECISIONS.md、LOGの確認等）を必ず実行してください。
 
 ---
@@ -51,7 +56,7 @@
 
 1. [プロジェクト概要](#プロジェクト概要)
 2. [開発理念](#開発理念)
-3. [三者協働開発ルール](#三者協働開発ルール)
+3. [四者協働開発ルール](#四者協働開発ルール)
 4. [現在の状況](#現在の状況)
 5. [技術スタック](#技術スタック)
 6. [環境構築](#環境構築)
@@ -78,7 +83,7 @@
 
 ## 💡 開発理念
 
-このプロジェクトは、[Dev-Rules](https://github.com/yoshihito-tsuji/Dev-Rules)の三者協働開発方法論に基づいて開発されています。
+このプロジェクトは、[Dev-Rules](https://github.com/yoshihito-tsuji/Dev-Rules)の四者協働開発方法論に基づいて開発されています。
 
 ### 基本原則
 
@@ -86,17 +91,19 @@
 2. **トレーサビリティ**: すべての決定事項と作業履歴を記録
 3. **再現性**: 誰でも（AI含む）過去の文脈を理解し、作業を再開できる
 4. **継続性**: プロジェクトが中断しても、ドキュメントから再開できる
+5. **対話の整理**: xangi システム / LOCO が、説明のかみ砕きと追加確認を支援する
 
 詳細は [Dev-Rules README](https://github.com/yoshihito-tsuji/Dev-Rules/blob/main/README.md) を参照。
 
 ---
 
-## 🤝 三者協働開発ルール
+## 🤝 四者協働開発ルール
 
-### 三者の役割
+### 四者の役割
 
 | 担当者 | 主な役割 | 責任範囲 |
 |--------|---------|---------|
+| **xangi システム / LOCO** | 相談役・整理役 | 要件のかみ砕き、状況整理、追加確認、Codex / Claude Code の説明補助 |
 | **Claude Code（設計・プランモード）** | 設計・アーキテクチャ担当 | 要件分析、システム設計、技術選定、実装計画策定 |
 | **Claude Code（実装・通常モード）** | 実装担当 | コーディング、テスト、デバッグ、環境構築 |
 | **Yoshihitoさん** | プロダクトオーナー | 最終意思決定、要件定義、方針決定 |
@@ -108,6 +115,7 @@
 3. **実装は設計に基づく**: Claude Codeは設計書に基づいて実装
 4. **最終決定はYoshihitoさん**: 重要な方針変更は必ずYoshihitoさんの承認を得る
 5. **すべてを記録する**: 決定事項、提案、実装内容をドキュメント化
+6. **不明点は xangi システム / LOCO で整理する**: 曖昧な指示はそのまま実装せず、確認してから進める
 
 ### コミュニケーション形式
 
@@ -192,6 +200,7 @@ project/
 ├── KNOWN_ISSUES.md               # 既知の問題と解決策
 ├── docs/
 │   ├── team_ops/
+│   │   ├── xangi_system_role.md     # xangi システム / LOCO の役割定義
 │   │   ├── claude_code_design_role.md  # Claude Code設計役割定義
 │   │   ├── claude_code_role.md         # Claude Code実装役割定義
 │   │   └── LOG_TEMPLATE.md       # ログテンプレート
@@ -209,15 +218,19 @@ project/
 ### 新機能開発
 
 1. **Yoshihitoさん**: 要件をClaude Code（設計）に伝える
-2. **Claude Code（設計）**: プランモードで設計書を作成し、Claude Code（実装）に指示
-3. **Claude Code（実装）**: 実装・テスト・ログ記録
-4. **Yoshihitoさん**: 実装結果を確認・承認
+2. **xangi システム / LOCO**: 要件をかみ砕き、論点や前提を整理する（必要に応じて）
+3. **Claude Code（設計）**: プランモードで設計書を作成し、Claude Code（実装）に指示
+4. **Claude Code（実装）**: 実装・テスト・ログ記録
+5. **xangi システム / LOCO**: 実装内容の追加確認、説明の補足、論点整理（必要に応じて）
+6. **Yoshihitoさん**: 実装結果を確認・承認
 
 ### バグ修正
 
 1. **Yoshihitoさん**: バグ内容をClaude Codeに伝える
-2. **Claude Code（実装）**: 軽微なバグは直接修正、設計変更が必要ならプランモードで設計
-3. **Yoshihitoさん**: 修正結果を確認
+2. **xangi システム / LOCO**: バグ内容を整理し、必要な確認点を明確にする（必要に応じて）
+3. **Claude Code（実装）**: 軽微なバグは直接修正、設計変更が必要ならプランモードで設計
+4. **xangi システム / LOCO**: 修正内容の追加確認、影響範囲の確認（必要に応じて）
+5. **Yoshihitoさん**: 修正結果を確認
 
 詳細は [Dev-Rules: ワークフロー](https://github.com/yoshihito-tsuji/Dev-Rules#ワークフロー) を参照。
 
@@ -226,6 +239,7 @@ project/
 ## 📚 関連ドキュメント
 
 - [Dev-Rules](https://github.com/yoshihito-tsuji/Dev-Rules) - 協働開発方法論
+- [docs/team_ops/xangi_system_role.md](docs/team_ops/xangi_system_role.md) - xangi システム / LOCO 役割定義
 - [docs/team_ops/claude_code_design_role.md](docs/team_ops/claude_code_design_role.md) - Claude Code設計役割定義
 - [docs/team_ops/claude_code_role.md](docs/team_ops/claude_code_role.md) - Claude Code実装役割定義
 - [docs/SETUP_GUIDE.md](docs/SETUP_GUIDE.md) - 環境構築詳細
