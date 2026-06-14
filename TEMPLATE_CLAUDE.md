@@ -65,14 +65,29 @@ project/
 
 1. `DECISIONS.md` — 重要な決定事項
 2. `LOG/YYYY-MM-DD.md` — 直近の作業状況（今日の日付のファイル）
-3. `docs/team_ops/claude_code_role.md` — 役割定義
+3. あなたの役割定義ファイル（どちらか一方）:
+   - Opus（設計担当）の場合: `~/dev/agmsg-guard/roles/designer.md`
+   - Sonnet（実装担当）の場合: `~/dev/agmsg-guard/roles/implementer.md`
 
 ## 参照先
 
 - プロジェクト詳細: `README.md`
-- 三者協働ルール: `../Dev-Rules/README.md`
+- 協働ルール: `../Dev-Rules/README.md`
 - 設計書: `docs/design/` または `docs/development/`
 - 作業ログ: `LOG/`
+- agmsg システム: `docs/team_ops/agmsg_system.md`
+- エスカレーション手順: `docs/team_ops/escalation_guide.md`
+
+---
+
+## agmsg チーム協働ルール
+
+このプロジェクトは agmsg+agmsg-guard による三者間共同開発体制で進める。
+
+- **あなたが Claude Code Opus の場合**: `~/dev/agmsg-guard/roles/designer.md` を読み、設計担当として動くこと。
+- **あなたが Claude Code Sonnet の場合**: `~/dev/agmsg-guard/roles/implementer.md` を読み、実装担当として動くこと。
+- agmsg チーム名: [TEAM]（プロジェクト開始時に init-dev-team.sh で設定済み）
+- コマンド・初期化手順: `docs/team_ops/agmsg_system.md` を参照。
 
 ---
 
