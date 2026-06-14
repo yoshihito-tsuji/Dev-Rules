@@ -1,6 +1,6 @@
 # agmsg+agmsg-guard システム概要
 
-agmsg は SQLite ベースのエージェント間メッセージングシステムです。Claude Code Opus（設計担当）と Claude Code Sonnet（実装担当）が agmsg チームを通じてメッセージをやり取りし、agmsg-guard がそのダイアログを監視して無限ループを防止します。ネットワーク不要・デーモン不要で、bash と sqlite3 のみで動作します。
+agmsg は SQLite ベースのエージェント間メッセージングシステムです。Claude Code Opus（設計担当）と Claude Code Sonnet（実装担当）が agmsg チームを通じてメッセージをやり取りし、agmsg-guard がそのダイアログを監視して無限ループを防止します。ネットワーク不要・デーモン不要で、bash と sqlite3 のみで動作します。**標準往復数: 10往復以内（agmsg-guard デフォルト上限: 20往復）。**
 
 ## 初期化コマンド
 

@@ -29,6 +29,10 @@ bash ~/.agents/skills/agmsg/scripts/send.sh <TEAM> opus sonnet '<メッセージ
 - `docs/team_ops/agmsg_system.md` — agmsg+agmsg-guard の初期化・操作手順
 - `docs/team_ops/claude_code_role.md` — 実装担当（sonnet）の役割定義
 
+## エスカレーション権限
+
+解決困難な技術判断が生じた場合、Codexに仕様相談することができる。相談結果はSonnetへの仕様メッセージに反映し、ユーザへも報告すること。
+
 ---
 
 **最終更新**: 2026-06-14
