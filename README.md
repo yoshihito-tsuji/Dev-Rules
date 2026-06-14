@@ -520,7 +520,21 @@ git remote add origin https://github.com/yoshihito-tsuji/project-name.git
 git push -u origin main
 ```
 
-### 6. Codex で設計開始
+### 6. agmsg チーム初期化（三者間協働開発体制）
+
+```bash
+bash ~/dev/agmsg-guard/init-dev-team.sh --team <TEAM> --project $(pwd)
+```
+
+これにより以下が一括セットアップされます:
+- agmsg チームに opus/sonnet を登録
+- ロールルール送信・プロジェクト CLAUDE.md への agmsg 協働節の追記
+- `guard-daemon.sh` 起動
+
+その後、Claude Code を 2 ウィンドウ開いてそれぞれ `/opus`、`/sonnet` を実行するとセッションが準備完了します。  
+詳細: `docs/team_ops/agmsg_system.md`
+
+### 7. Codex で設計開始
 
 Codex（VSCode 等）を起動し、`CODEX_START.md`（プロジェクト固有の起動プロンプト）または `CODEX_ONBOARDING.md` に従って設計作業を開始
 
