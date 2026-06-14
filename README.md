@@ -461,12 +461,15 @@ project/
 
 ```bash
 # Dev-Rulesをクローン（まだの場合）
-cd ~/Claude_Code
+cd ~/dev
 git clone https://github.com/yoshihito-tsuji/Dev-Rules.git
+
+# インストーラを実行（agmsg-guard・/opus・/sonnet コマンドを一括セットアップ）
+bash ~/dev/Dev-Rules/setup/install.sh
 
 # グローバルCLAUDE.mdを配置
 mkdir -p ~/.claude
-cp ~/Claude_Code/Dev-Rules/setup/global-claude-md.md ~/.claude/CLAUDE.md
+cp ~/dev/Dev-Rules/setup/global-claude-md.md ~/.claude/CLAUDE.md
 ```
 
 グローバルCLAUDE.mdを更新した場合は、Dev-Rulesに同期してください：
