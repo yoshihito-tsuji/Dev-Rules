@@ -459,6 +459,26 @@ project/
 新しいPCでClaude Codeを使い始めるとき、グローバルCLAUDE.mdを配置してください。
 この設定は全プロジェクト共通で自動読み込みされます。
 
+#### 方法A: Claude Code に頼む（推奨）
+
+新しいPCでは、ターミナルでコマンドを打つ代わりに、Claude Code に次のように頼むだけでセットアップできます。
+
+Claude Code のプロンプトに、例えば次のように入力してください:
+
+```text
+Dev-Rules の開発環境をこのPCにセットアップして。
+https://github.com/yoshihito-tsuji/Dev-Rules を ~/dev/Dev-Rules に clone して、
+setup/install.sh を実行して。その後 setup/global-claude-md.md を ~/.claude/CLAUDE.md に配置して。
+```
+
+Claude Code が clone・install.sh 実行・グローバルCLAUDE.md配置まで行います。
+完了後、新しいプロジェクトフォルダで Claude Code を2窓開き、`/opus` と `/sonnet` を打てば協働体制が立ち上がります。
+
+> ※ `/opus`・`/sonnet` コマンドは install.sh が配置して初めて使えます。セットアップ前は存在しない点に注意。
+> ※ agmsg-guard は private リポジトリのため、GitHub 認証が必要です。未認証なら案内に従って後から手動 clone してください。
+
+#### 方法B: ターミナルで手動
+
 ```bash
 # Dev-Rulesをクローン（まだの場合）
 cd ~/dev
@@ -475,8 +495,8 @@ cp ~/dev/Dev-Rules/setup/global-claude-md.md ~/.claude/CLAUDE.md
 グローバルCLAUDE.mdを更新した場合は、Dev-Rulesに同期してください：
 
 ```bash
-cp ~/.claude/CLAUDE.md ~/Claude_Code/Dev-Rules/setup/global-claude-md.md
-cd ~/Claude_Code/Dev-Rules && gacp "Update: グローバルCLAUDE.mdテンプレートを同期"
+cp ~/.claude/CLAUDE.md ~/dev/Dev-Rules/setup/global-claude-md.md
+cd ~/dev/Dev-Rules && gacp "Update: グローバルCLAUDE.mdテンプレートを同期"
 ```
 
 ### 1. リポジトリ作成
