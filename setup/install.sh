@@ -93,8 +93,12 @@ elif [ -d "$AGMSG_GUARD_DIR" ]; then
 else
   info "agmsg-guard をクローンします..."
   mkdir -p "$HOME/dev"
-  git clone "$AGMSG_GUARD_REPO" "$AGMSG_GUARD_DIR"
-  ok "agmsg-guard をクローンしました: $AGMSG_GUARD_DIR"
+  if git clone "$AGMSG_GUARD_REPO" "$AGMSG_GUARD_DIR" 2>/dev/null; then
+    ok "agmsg-guard をクローンしました: $AGMSG_GUARD_DIR"
+  else
+    warn "agmsg-guard のクローンに失敗しました（認証/権限/ネットワークを確認）。手動で git clone してください。スキップして続行します。"
+    warn "手動: git clone $AGMSG_GUARD_REPO $AGMSG_GUARD_DIR"
+  fi
 fi
 
 # --- 3. /opus・/sonnet コマンドをコピー ---
