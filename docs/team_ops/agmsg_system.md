@@ -16,34 +16,64 @@ gh repo clone yoshihito-tsuji/agmsg-guard ~/dev/agmsg-guard
 
 ## 開発セッション起動
 
-新しい Claude Code ウィンドウを開いたら、スラッシュコマンドで役割を設定します。
+新しいプロジェクト用フォルダを作り、**Claude Code を 2 ウィンドウ開きます**。
+片方を設計担当、もう片方を実装担当にし、それぞれスラッシュコマンドを打つだけで体制が立ち上がります。
 
-```
-/opus     ← 設計担当セッションとして起動（roles/designer.md を読み込む）
-/sonnet   ← 実装担当セッションとして起動（roles/implementer.md を読み込む）
+```text
+ウィンドウ1: /opus     ← 設計担当として起動（roles/designer.md を読み込む）
+ウィンドウ2: /sonnet   ← 実装担当として起動（roles/implementer.md を読み込む）
 ```
 
-これらのコマンドは `~/.claude/CLAUDE.md` に定義されており、実体は `~/dev/agmsg-guard/setup-role.sh` です。agmsg または agmsg-guard が未インストールの場合、クローン手順を案内して終了します。
+`/opus`・`/sonnet` の実体は `~/.claude/commands/opus.md`・`sonnet.md`（グローバルコマンド）で、
+内部で `~/dev/agmsg-guard/setup-role.sh --role <opus|sonnet>` を実行します。
+
+`/opus` または `/sonnet` を最初に打った時点で、`setup-role.sh` が次を自動で行います:
+
+1. agmsg / agmsg-guard の存在確認（未インストールならクローン手順を案内して終了）
+2. チーム名検出（`.agmsg-team` ファイル → 無ければカレントディレクトリ名から推定）
+3. チーム未初期化なら `init-dev-team.sh` を自動実行（join・ルール送信・CLAUDE.md 追記・`.agmsg-team` 作成）
+4. 役割ルールファイルの場所を案内
+5. **チーム別の guard-daemon** を起動（既に起動中ならスキップ）
+
+そのため、**1 つ目のウィンドウで `/opus` を打てばチームと guard がまるごと立ち上がり**、
+2 つ目で `/sonnet` を打つと「初期化済み」として検出され、実装担当として参加します。
+
+> **複数プロジェクトの並行運用**: guard-daemon の PID ファイルは
+> `~/.agents/agmsg/run/guard-daemon-<team>.pid` のように **チーム別** です。
+> プロジェクトごとにチーム名が異なれば、それぞれ独立した guard が並行して動きます。
+> → 別プロジェクトを開くときはフォルダ（=チーム名）を分けること。同名チームだと guard が共有されます。
+>
+> **同フォルダで opus/sonnet を動かす場合の注意**: opus と sonnet を同じフォルダで起動すると、
+> agmsg の identity が同一プロジェクトパスに 2 つ登録されます。動作はしますが、混乱を避けるため
+> **2 つのウィンドウで同じプロジェクトフォルダを開く**運用を基本とし、`/opus`・`/sonnet` で役割を明示してください。
 
 ## 新規プロジェクト手順
 
-```
-1. リポジトリ作成・初回コミット（README.md の「新規プロジェクト立ち上げ手順」参照）
-2. agmsg チーム初期化
-   bash ~/dev/agmsg-guard/init-dev-team.sh --team <TEAM> --project <PATH>
-3. 実装担当セッション起動
-   （新しい Claude Code ウィンドウを開き）/sonnet
-4. 設計担当（ユーザが指示）
-   ユーザが Opus セッションに設計タスクを伝える
+基本は「フォルダを作り、2 ウィンドウで `/opus`・`/sonnet` を打つ」だけです。
+
+```text
+1. プロジェクト用フォルダを作成（git init・初回コミットは README.md の手順参照）
+2. ウィンドウ1（設計担当）でそのフォルダを開き、/opus を実行
+   → チーム作成・join・ルール送信・CLAUDE.md 追記・guard 起動まで自動
+3. ウィンドウ2（実装担当）で同じフォルダを開き、/sonnet を実行
+   → 「初期化済み」として検出され、実装担当として参加
+4. ユーザが Opus ウィンドウに設計タスクを伝える
 ```
 
-`init-dev-team.sh` が行うこと:
+チーム名は、フォルダ内に `.agmsg-team` があればそれを、無ければフォルダ名から自動で決まります。
+明示したい場合は、フォルダに `.agmsg-team`（中身はチーム名 1 行）を置いてから `/opus` を打ちます。
+
+### 内部で何が起きるか（手動実行は不要）
+
+`/opus`・`/sonnet` → `setup-role.sh` → 未初期化なら `init-dev-team.sh` が走り、次を行います:
+
 - agmsg チームに opus/sonnet を登録
 - ロールルールをチームに送信（べき等: 重複送信しない）
 - プロジェクトの `CLAUDE.md` に agmsg 協働ルール節を追記
-- `guard-daemon.sh` を起動（未起動の場合のみ）
+- `.agmsg-team` マーカーを作成
+- **チーム別の** `guard-daemon.sh` を起動（そのチームの guard が未起動の場合のみ）
 
-## 初期化コマンド
+手動で初期化したい場合のみ、次を直接実行できます（通常は不要）:
 
 ```bash
 bash ~/dev/agmsg-guard/init-dev-team.sh --team <TEAM> --project <PATH>
@@ -53,6 +83,20 @@ bash ~/dev/agmsg-guard/init-dev-team.sh --team <TEAM> --project <PATH>
 
 - `designer.md` — 設計担当（Opus）向けルール
 - `implementer.md` — 実装担当（Sonnet）向けルール
+
+### guard-daemon の停止
+
+guard を手動で止めたいときは、チーム別 PID ファイルから停止します:
+
+```bash
+# 特定チームの guard を停止
+kill "$(cat ~/.agents/agmsg/run/guard-daemon-<TEAM>.pid)"
+
+# 稼働中の guard-daemon を一覧
+ls ~/.agents/agmsg/run/guard-daemon-*.pid
+```
+
+通常は wall-timeout（既定 3600 秒）到達で自然終了するため、明示停止は任意です。
 
 ## guard 停止条件（最初にヒットしたもの優先）
 
