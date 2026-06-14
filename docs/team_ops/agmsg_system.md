@@ -41,6 +41,17 @@ bash ~/.agents/skills/agmsg/scripts/team.sh <TEAM>
 bash ~/.agents/skills/agmsg/scripts/history.sh <TEAM> <AGENT>
 ```
 
+## DB メンテナンス
+
+メッセージ DB が肥大化した場合は `db-maintenance.sh` を使用:
+
+```bash
+bash ~/dev/agmsg-guard/db-maintenance.sh --status               # DB サイズ・件数確認
+bash ~/dev/agmsg-guard/db-maintenance.sh --archive 30  # 30日以上前をアーカイブ
+bash ~/dev/agmsg-guard/db-maintenance.sh --purge 90    # 90日以上前を削除
+bash ~/dev/agmsg-guard/db-maintenance.sh --vacuum       # DB 圧縮
+```
+
 ## 参照ドキュメント
 
 - `~/dev/agmsg-guard/README.md` — guard.sh の全オプションと使用例
