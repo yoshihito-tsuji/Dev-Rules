@@ -28,6 +28,7 @@ bash ~/.agents/skills/agmsg/scripts/send.sh <TEAM> opus sonnet '<メッセージ
 - `~/dev/agmsg-guard/roles/designer.md` — このルールの参照元
 - `docs/team_ops/agmsg_system.md` — agmsg+agmsg-guard の初期化・操作手順
 - `docs/team_ops/claude_code_role.md` — 実装担当（sonnet）の役割定義
+- `docs/team_ops/escalation_guide.md` — Codex へのエスカレーション手順
 
 ## エスカレーション権限
 
