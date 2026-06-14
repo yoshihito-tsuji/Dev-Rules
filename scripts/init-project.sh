@@ -174,6 +174,11 @@ git init -q
 git add .
 git commit -q -m "Initial commit: project scaffold via Dev-Rules/init-project.sh"
 
+# agmsg チーム初期化
+if [ -f "$HOME/dev/agmsg-guard/init-dev-team.sh" ]; then
+  bash "$HOME/dev/agmsg-guard/init-dev-team.sh" --team "$PROJECT_NAME" --project "$PROJECT_DIR"
+fi
+
 echo "完了しました。"
 echo ""
 echo "作成されたファイル:"

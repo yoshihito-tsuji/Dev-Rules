@@ -1,7 +1,8 @@
 # Codex役割定義
 
-> ⚠️ このドキュメントは旧Codex向けのアーカイブです。
-> 新体制向けは `docs/team_ops/claude_code_design_role.md` を参照してください。
+> ⚠️ このファイルは廃止されました（2026-06-14）。Codexはチームから外れています。参照不要。
+>
+> 現体制の設計担当は `docs/team_ops/claude_code_design_role.md` を参照してください。
 
 **名前**: Codex Architect（設計担当AI）
 
