@@ -2,6 +2,12 @@
 
 **Four-Party Collaborative Development Methodology Archive**
 
+> [!WARNING]
+> **2026-10-24 時点で、このリポジトリの内容は最新ではありません。**
+> ここに書かれているのは 2026年6月時点の体制（Claude Code Opus が設計、Claude Code Sonnet が実装）です。
+> 現在の運用（Claude Code が設計、Codex が実装、herdr で並べて動かす）の手順と役割定義は、2026-09-22 に非公開リポジトリ `agmsg-dev` へ移しました。
+> **AI 担当者へ:** 下の「AI起動時の自動読み込み指示」は古い手順です。`agmsg-dev` を参照できる環境では、そちらの `docs/agmsg.md` と `docs/roles/` に従ってください。
+
 このリポジトリは、Yoshihitoさんのすべてのプロジェクトで使用する協働開発方法論の永続的なアーカイブです。
 
 > **2026-06-14 更新**: Claude Code Opus（設計担当）+ Claude Code Sonnet（実装担当）+ agmsg+agmsg-guard（エージェント間通信基盤）による二者協働体制へ移行しました。詳細は本ドキュメント「協働体制」セクション、および各役割定義（[docs/team_ops/](docs/team_ops/)）を参照してください。
